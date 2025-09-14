@@ -1,0 +1,3385 @@
+<!doctype html>
+<html lang='vi'>
+<head>
+<meta charset='utf-8'/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name='viewport' content='width=device-width,initial-scale=1'/>
+<title>KIỂM TRA CHÍNH TRỊ NĂM 2025 — Đề 50 câu</title>
+<style>
+body{
+
+
+font-family:Arial, sans-serif;max-width:1100px;margin:12px auto;padding:12px;}
+.header{background:gold;padding:18px;text-align:left;color:darkred;font-size:26px;font-weight:800;display:flex;align-items:center;gap:16px;}
+.header img{height:64px;}
+.info{margin:12px 0;display:flex;gap:12px;align-items:center;}
+.input{padding:8px;border:1px solid #ccc;border-radius:4px;width:300px;}
+.question{border-bottom:1px solid #eee;padding:10px 0
+  word-wrap: break-word;}
+.qtxt{font-weight:700;}
+label.option{display:block;margin:6px 0;cursor:pointer;}
+button{margin-top:12px;padding:10px 16px;font-size:16px;background:#0b5ed7;color:#fff;border:none;border-radius:6px;}
+.small{font-size:0.9rem;color:#444}
+.footer-note{margin-top:14px;font-size:0.9rem;color:#666}
+</style>
+</head>
+<body>
+<div class='header'><img src='logo.png' alt='Logo'><div>KIỂM TRA CHÍNH TRỊ NĂM 2025</div></div>
+
+<div style='margin-top:12px;'>
+  <div class='info'>
+    <div><input id='fullname' class='input' placeholder='Họ và tên (bắt buộc)'></div>
+    <div><input id='unit' class='input' placeholder='Đơn vị (bắt buộc)'></div>
+    <div style='margin-left:auto'><button id='regenBtn' type='button'> Bắt đầu lại 50 câu mới</button></div>
+  </div>
+
+  <div id='quizArea'></div>
+  <div style='margin-top:12px'>
+    <button id='submitBtn' form='quizForm'>Nộp & Chấm</button>
+  </div>
+  <div class='footer-note'>Mỗi lần quay lại trang sẽ sinh một bộ 50 câu ngẫu nhiên khác. Giữ nguyên thứ tự đáp án A,B,C,D như file gốc.</div>
+</div>
+
+<script>
+const ALL_QUESTIONS = [
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết tệ nạn xã hội là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Hành vi sai lệch chuẩn mực xã hội."
+      },
+      {
+        "label": "b",
+        "text": "Hiện tượng xã hội tiêu cực gây hậu quả cho cá nhân và cộng đồng."
+      },
+      {
+        "label": "c",
+        "text": "Hành vi trái đạo đức nhưng không vi phạm pháp luật."
+      },
+      {
+        "label": "d",
+        "text": "Mọi hành vi ngoài quy định pháp luật."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết một trong những nguyên nhân chủ yếu dẫn đến tệ nạn xã hội là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tác động mặt trái của kinh tế thị trường, hội nhập quốc tế."
+      },
+      {
+        "label": "b",
+        "text": "Do xã hội quá phát triển."
+      },
+      {
+        "label": "c",
+        "text": "Do thiếu cơ sở vật chất."
+      },
+      {
+        "label": "d",
+        "text": "Do phong tục, tập quán cổ truyền."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết đặc điểm của tệ nạn xã hội trong Quân đội là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Xuất hiện nhiều hơn ngoài xã hội."
+      },
+      {
+        "label": "b",
+        "text": "Có tính lây lan, khó kiểm soát, ảnh hưởng trực tiếp đến kỷ luật Quân đội."
+      },
+      {
+        "label": "c",
+        "text": "Không có tác động lớn đến nhiệm vụ."
+      },
+      {
+        "label": "d",
+        "text": "Chỉ ảnh hưởng đến cá nhân."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết tệ nạn xã hội tác động xấu nhất đến phẩm chất nào của quân nhân?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tác phong."
+      },
+      {
+        "label": "b",
+        "text": "Phẩm chất chính trị, đạo đức, lối sống."
+      },
+      {
+        "label": "c",
+        "text": "Tinh thần thể thao."
+      },
+      {
+        "label": "d",
+        "text": "Văn hóa giao tiếp."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết một trong những hậu quả trực tiếp của tệ nạn xã hội trong quân đội là:",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giảm năng suất lao động xã hội."
+      },
+      {
+        "label": "b",
+        "text": "Suy thoái phẩm chất, kỷ luật, uy tín của Quân đội."
+      },
+      {
+        "label": "c",
+        "text": "Tăng chi phí y tế cộng đồng."
+      },
+      {
+        "label": "d",
+        "text": "Giảm năng lực quản lý nhà nước."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết phòng, chống tệ nạn xã hội trong quân đội là trách nhiệm của ai?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chỉ huy đơn vị."
+      },
+      {
+        "label": "b",
+        "text": "Mỗi cán bộ, đảng viên."
+      },
+      {
+        "label": "c",
+        "text": "Cấp ủy, chỉ huy, cơ quan chính trị và toàn thể quân nhân."
+      },
+      {
+        "label": "d",
+        "text": "Bộ Tư lệnh Quân khu."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết một trong những nguyên nhân chủ quan dẫn đến quân nhân sa vào tệ nạn xã hội?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Bị ép buộc từ bên ngoài."
+      },
+      {
+        "label": "b",
+        "text": "Thiếu ý chí rèn luyện, buông lỏng tự quản."
+      },
+      {
+        "label": "c",
+        "text": "Thiếu thiết bị kỹ thuật."
+      },
+      {
+        "label": "d",
+        "text": "Do hoàn cảnh gia đình nghèo khó."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết cơ sở quan trọng nhất để ngăn chặn tệ nạn xã hội xâm nhập quân đội?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Ý thức tự giác của mỗi quân nhân."
+      },
+      {
+        "label": "b",
+        "text": "Sự hỗ trợ của chính quyền địa phương."
+      },
+      {
+        "label": "c",
+        "text": "Tăng cường biện pháp kinh tế."
+      },
+      {
+        "label": "d",
+        "text": "Công tác khen thưởng."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết biểu hiện của các tệ nạn xã hội khi xâm nhập vào đội ngũ SQ, QNCN là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Biểu hiện của sự sáng tạo văn hóa mới."
+      },
+      {
+        "label": "b",
+        "text": "Một hình thức giải trí trong xã hội hiện đại."
+      },
+      {
+        "label": "c",
+        "text": "Nhu cầu tất yếu trong nền kinh tế thị trường."
+      },
+      {
+        "label": "d",
+        "text": "Lối sống vô tổ chức, coi thường kỷ cương, pháp luật."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết tệ nạn xã hội gây tác hại nghiêm trọng nhất đối với sĩ quan, quân nhân chuyên nghiệp ở phương diện nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Làm giảm sút sức khỏe và tinh thần."
+      },
+      {
+        "label": "b",
+        "text": "Làm mất khả năng tiếp cận khoa học công nghệ."
+      },
+      {
+        "label": "c",
+        "text": "Làm suy thoái tư tưởng chính trị, đạo đức, lối sống."
+      },
+      {
+        "label": "d",
+        "text": "Gây cản trở việc giao lưu với nhân dân."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết một trong những hậu quả nghiêm trọng nhất của tệ nạn xã hội đối với Quân đội là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Làm mất vị thế, uy tín, danh dự của quân đội và hình ảnh “Bộ đội Cụ Hồ”."
+      },
+      {
+        "label": "b",
+        "text": "Làm tăng cường đoàn kết trong đơn vị."
+      },
+      {
+        "label": "c",
+        "text": "Làm phong phú thêm đời sống tinh thần bộ đội."
+      },
+      {
+        "label": "d",
+        "text": "Tạo điều kiện tiếp cận công nghệ số."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết những nguyên nhân nào sau đây làm phát sinh nguy cơ tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Thiếu sự quan tâm của lãnh đạo, chỉ huy, tác động tiêu cực của mặt trái kinh tế thị trường,"
+      },
+      {
+        "label": "b",
+        "text": "Thu nhập, đời sống còn khó khăn, nhất là với sĩ quan trẻ."
+      },
+      {
+        "label": "c",
+        "text": "Ảnh hưởng từ bạn bè, lối sống thực dụng."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết thực trạng một số cấp ủy, chỉ huy còn thiếu sót trong công tác phòng, chống tệ nạn xã hội chủ yếu do nguyên nhân nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Thiếu chủ trương lãnh đạo, chỉ đạo quyết liệt, kịp thời."
+      },
+      {
+        "label": "b",
+        "text": "Quá tập trung vào thành tích, có biểu hiện bao che, giấu giếm khuyết điểm."
+      },
+      {
+        "label": "c",
+        "text": "Công tác kiểm tra, giám sát chưa thường xuyên."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết một số SQ, QNCN mắc tệ nạn xã hội bị xử lý kỷ luật chủ yếu do nguyên nhân chủ quan nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Bản lĩnh chính trị yếu, thiếu tu dưỡng rèn luyện."
+      },
+      {
+        "label": "b",
+        "text": "Ham chơi, đua đòi, tham vọng làm giàu nhanh chóng."
+      },
+      {
+        "label": "c",
+        "text": "So sánh thiệt hơn giữa cống hiến và hưởng thụ."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”25, đồng chí cho biết trong công tác quản lý SQ, QNCN, nội dung nào sau đây cần được chú trọng hàng đầu?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quản lý tình hình chính trị nội bộ và tư tưởng."
+      },
+      {
+        "label": "b",
+        "text": "Quản lý thể lực, sức khỏe."
+      },
+      {
+        "label": "c",
+        "text": "Quản lý phương tiện chiến đấu."
+      },
+      {
+        "label": "d",
+        "text": "Quản lý cơ sở vật chất huấn luyện."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết trong phòng, chống tệ nạn xã hội trong quân đội, phương châm cơ bản là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "“Phòng là chính, chống là phụ”."
+      },
+      {
+        "label": "b",
+        "text": "“Xây” và “chống” kết hợp, lấy “xây” là chính."
+      },
+      {
+        "label": "c",
+        "text": "“Chống” trước, “xây” sau."
+      },
+      {
+        "label": "d",
+        "text": "Lấy kỷ luật thay thế giáo dục."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết để nâng cao hiệu quả phòng, chống tệ nạn xã hội trong quân đội, cần phát huy tính gương mẫu của lực lượng nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đoàn viên, thanh niên trong đơn vị."
+      },
+      {
+        "label": "b",
+        "text": "Các tổ chức quần chúng."
+      },
+      {
+        "label": "c",
+        "text": "Đội ngũ cán bộ, đảng viên và SQ, QNCN, nhất là cán bộ chủ trì."
+      },
+      {
+        "label": "d",
+        "text": "Hội đồng quân nhân cơ sở."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết trong tuyên truyền, giáo dục phòng, chống tệ nạn xã hội, cần đặc biệt chú trọng trang bị kỹ năng gì cho SQ, QNCN?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Kỹ năng xử lý tình huống, quản lý tài chính cá nhân, tiếp cận thông tin tích cực."
+      },
+      {
+        "label": "b",
+        "text": "Kỹ năng tổ chức huấn luyện thể lực."
+      },
+      {
+        "label": "c",
+        "text": "Kỹ năng sử dụng vũ khí trang bị mới."
+      },
+      {
+        "label": "d",
+        "text": "Kỹ năng về hội nhập quốc tế và đối ngoại nhân dân."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết phát huy tính tích cực, tự giác của sĩ quan, quân nhân chuyên nghiệp trong phòng, chống tệ nạn xã hội, gồm những nội dung nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Kiên định bản lĩnh chính trị, tư tưởng vững vàng; thường xuyên tu dưỡng đạo đức, lối sống."
+      },
+      {
+        "label": "b",
+        "text": "Nhận thức về tác hại của tệ nạn xã hội."
+      },
+      {
+        "label": "c",
+        "text": "Đăng ký, cam kết không tham gia tệ nạn xã hội."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết đặc điểm cơ bản của cán bộ ở đơn vị cơ sở là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Thường công tác trong các cơ quan chiến lược, tham mưu cấp BQP."
+      },
+      {
+        "label": "b",
+        "text": "Trực tiếp huấn luyện, giáo dục, quản lý, rèn luyện bộ đội."
+      },
+      {
+        "label": "c",
+        "text": "Chủ yếu đảm nhiệm công tác nghiên cứu, tham mưu chiến lược."
+      },
+      {
+        "label": "d",
+        "text": "Không trực tiếp tiếp xúc với hạ sĩ quan, binh sĩ."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết đặc điểm nào dưới đây thường thấy ở cán bộ cơ sở trong QĐND Việt Nam?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Thường có tuổi đời cao, nhiều kinh nghiệm chỉ huy."
+      },
+      {
+        "label": "b",
+        "text": "Trẻ tuổi, nhiệt huyết, song kinh nghiệm chỉ huy, quản lý còn hạn chế."
+      },
+      {
+        "label": "c",
+        "text": "Ít gắn bó với bộ đội do bận công tác cơ quan."
+      },
+      {
+        "label": "d",
+        "text": "Chủ yếu đảm nhiệm công tác hậu cần, kỹ thuật."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết hình thức, biện pháp chủ yếu để cán bộ ở đơn vị cơ sở tự nâng cao năng lực chỉ huy, quản lý là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tham gia hội thảo khoa học quân sự."
+      },
+      {
+        "label": "b",
+        "text": "Thông qua tự bồi dưỡng, tự rèn luyện gắn với thực tiễn."
+      },
+      {
+        "label": "c",
+        "text": "Học tập kinh nghiệm từ cán bộ nghỉ hưu."
+      },
+      {
+        "label": "d",
+        "text": "Nghiên cứu tài liệu lịch sử quân sự."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết trong điều kiện chiến tranh hiện đại, cán bộ cơ sở cần có những năng lực nào để đáp ứng yêu cầu nhiệm vụ?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Năng lực làm chủ vũ khí, trang bị."
+      },
+      {
+        "label": "b",
+        "text": "Năng lực ứng dụng khoa học – công nghệ vào chỉ huy, quản lý."
+      },
+      {
+        "label": "c",
+        "text": "Năng lực kết hợp quản lý con người với phương tiện kỹ thuật."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết thái độ, trách nhiệm của cán bộ cơ sở trong chỉ huy, quản lý cần được thể hiện qua những nội dung nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quyết đoán, nhiệt tình, dân chủ, trung thực, kiên nhẫn."
+      },
+      {
+        "label": "b",
+        "text": "Nêu cao tinh thần trách nhiệm trong lãnh đạo, quản lý, huấn luyện, rèn luyện."
+      },
+      {
+        "label": "c",
+        "text": "Kiên định mục tiêu, lý tưởng, gương mẫu hoàn thành nhiệm vụ."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết vì sao việc nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở được coi là yêu cầu then chốt trong xây dựng QĐND Việt Nam tinh, gọn, mạnh, tiến lên hiện đại?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vì đây là lực lượng trực tiếp tổ chức, quản lý, chỉ huy bộ đội, phản ánh tâm tư, nguyện vọng của quần chúng, quyết định chất lượng hoàn thành nhiệm vụ ở đơn vị."
+      },
+      {
+        "label": "b",
+        "text": "Vì cán bộ cơ sở chủ yếu là sĩ quan trẻ, có nhiều triển vọng phát triển trong tương lai."
+      },
+      {
+        "label": "c",
+        "text": "Vì cán bộ cơ sở được đào tạo cơ bản tại các học viện, nhà trường quân đội."
+      },
+      {
+        "label": "d",
+        "text": "Vì nâng cao năng lực chỉ huy giúp giảm thiểu khó khăn về trang bị, vũ khí hiện nay."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết trong bối cảnh cuộc Cách mạng công nghiệp 4.0, đội ngũ cán bộ cơ sở cần đáp ứng những yêu cầu gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nhận thức vai trò then chốt của con người trong việc làm chủ vũ khí hiện đại."
+      },
+      {
+        "label": "b",
+        "text": "Thay đổi tư duy vận hành vũ khí tự động hóa, “thông minh”; có khả năng ứng dụng công nghệ số trong chỉ huy, quản lý."
+      },
+      {
+        "label": "c",
+        "text": "Tích cực học tập, rèn luyện để theo kịp sự chuyên môn hóa nhiệm vụ."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết cấp ủy, chỉ huy các cấp cần thực hiện những biện pháp gì để xây dựng đội ngũ cán bộ cơ sở vững mạnh?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Thực hiện nghiêm các nghị quyết về công tác cán bộ."
+      },
+      {
+        "label": "b",
+        "text": "Tạo nguồn và cử cán bộ đi đào tạo theo chức danh, học vị."
+      },
+      {
+        "label": "c",
+        "text": "Ưu tiên cán bộ trẻ, có trình độ chuyên môn, triển vọng phát triển; bảo đảm đủ số lượng, chất lượng, xây dựng cán bộ “vừa hồng, vừa chuyên”."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết biện pháp nào được coi là đặc biệt hiệu quả để đánh giá và nâng cao năng lực cán bộ cơ sở?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tăng cường luân chuyển, rèn luyện thử thách trong nhiều môi trường và nhiệm vụ."
+      },
+      {
+        "label": "b",
+        "text": "Chỉ tập trung huấn luyện lý thuyết ở nhà trường."
+      },
+      {
+        "label": "c",
+        "text": "Giảm bớt nhiệm vụ khó để tránh sai sót."
+      },
+      {
+        "label": "d",
+        "text": "Giao nhiệm vụ cố định, ổn định lâu dài để cán bộ quen việc."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết trong công tác rèn luyện, thử thách cán bộ cơ sở, việc mạnh dạn giao nhiệm vụ khó, phức tạp có ý nghĩa chủ yếu gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp cán bộ cơ sở thể hiện khả năng cá nhân và củng cố uy tín"
+      },
+      {
+        "label": "b",
+        "text": "Tạo cơ hội để cán bộ trưởng thành, tích lũy kinh nghiệm và bản lĩnh thực tiễn"
+      },
+      {
+        "label": "c",
+        "text": "Giúp đơn vị giảm tải cho cán bộ chỉ huy cấp trên"
+      },
+      {
+        "label": "d",
+        "text": "Tạo điều kiện cán bộ cơ sở tham gia nhiều hoạt động xã hội"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết trong quá trình nâng cao năng lực quản lý, chỉ huy, việc gắn với tinh thần “7 dám” giúp cán bộ cơ sở đạt mục tiêu gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Có thêm kiến thức chuyên ngành về kỹ thuật quân sự."
+      },
+      {
+        "label": "b",
+        "text": "Giảm áp lực trong công tác do được tập thể chia sẻ."
+      },
+      {
+        "label": "c",
+        "text": "Được cấp trên giao nhiều quyền hạn hơn trong quản lý đơn vị."
+      },
+      {
+        "label": "d",
+        "text": "Nâng cao cả kiến thức, kỹ năng và thái độ trách nhiệm đối với nhiệm vụ."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết tinh thần “7 dám” góp phần trực tiếp vào việc hình thành phẩm chất gì nổi bật ở đội ngũ cán bộ cơ sở?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tác phong nhanh nhẹn, kỷ luật nghiêm minh."
+      },
+      {
+        "label": "b",
+        "text": "Khả năng quản lý hành chính và xử lý văn bản thành thạo."
+      },
+      {
+        "label": "c",
+        "text": "Bản lĩnh, trí tuệ, trách nhiệm, sáng tạo và sẵn sàng đương đầu với khó khăn, thử thách."
+      },
+      {
+        "label": "d",
+        "text": "Khả năng thích ứng nhanh với đời sống dân sự sau quân ngũ."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết nâng cao năng lực chỉ huy, quản lý cho cán bộ cơ sở cần được tiến hành theo nguyên tắc nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tập trung vào huấn luyện ngắn hạn theo từng đợt."
+      },
+      {
+        "label": "b",
+        "text": "Thường xuyên, lâu dài, liên tục gắn với chức trách, nhiệm vụ."
+      },
+      {
+        "label": "c",
+        "text": "Chủ yếu dựa vào tự học, tự rèn của cán bộ cơ sở."
+      },
+      {
+        "label": "d",
+        "text": "Chỉ thực hiện khi có yêu cầu từ cấp trên."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết việc kết hợp giữa “xây” và “chống” trong rèn luyện cán bộ cơ sở nhằm mục tiêu chủ yếu nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đảm bảo vừa bồi dưỡng kiến thức, kỹ năng, vừa ngăn ngừa hạn chế, sai phạm"
+      },
+      {
+        "label": "b",
+        "text": "Tạo ra phong trào thi đua giữa các đơn vị."
+      },
+      {
+        "label": "c",
+        "text": "Giúp cán bộ cơ sở hoàn thành đủ chỉ tiêu báo cáo."
+      },
+      {
+        "label": "d",
+        "text": "Hạn chế công tác kiểm tra, đánh giá để cán bộ thoải mái rèn luyện."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết vai trò nêu gương của cán bộ cấp trên trong rèn luyện cán bộ cơ sở được thể hiện tập trung ở điểm nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đưa ra mệnh lệnh rõ ràng và giám sát nghiêm ngặt."
+      },
+      {
+        "label": "b",
+        "text": "Chia sẻ kinh nghiệm khi cán bộ cơ sở yêu cầu."
+      },
+      {
+        "label": "c",
+        "text": "Chỉ hướng dẫn về chuyên môn quân sự, không cần chú trọng đạo đức."
+      },
+      {
+        "label": "d",
+        "text": "Nói đi đôi với làm, công tâm, trong sạch, là tấm gương để cấp dưới noi theo."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Nâng cao năng lực chỉ huy, quản lý cho đội ngũ cán bộ ở đơn vị cơ sở đáp ứng yêu cầu xây dựng Quân đội tinh, gọn, mạnh, tiến lên hiện đại”, đồng chí cho biết vì sao cán bộ cơ sở cần phải nâng cao trình độ tin học và ngoại ngữ trong giai đoạn hiện nay?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Để làm chủ vũ khí công nghệ cao và nắm vững các thao tác kỹ chiến thuật hiện đại."
+      },
+      {
+        "label": "b",
+        "text": "Để thuận tiện trong việc giao lưu quốc tế ngoài nhiệm vụ chính trị."
+      },
+      {
+        "label": "c",
+        "text": "Để nâng cao cơ hội du học và hợp tác đào tạo ở nước ngoài."
+      },
+      {
+        "label": "d",
+        "text": "Để dễ dàng tiếp cận các nguồn thông tin giải trí đa dạng."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết dân tộc thiểu số chiếm khoảng bao nhiêu phần trăm dân số cả nước?",
+    "options": [
+      {
+        "label": "a",
+        "text": "10%"
+      },
+      {
+        "label": "b",
+        "text": "12%"
+      },
+      {
+        "label": "c",
+        "text": "15%"
+      },
+      {
+        "label": "d",
+        "text": "20%"
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết Việt Nam là quốc gia có đặc điểm tôn giáo như thế nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đa tôn giáo"
+      },
+      {
+        "label": "b",
+        "text": "Chỉ có tôn giáo nội sinh"
+      },
+      {
+        "label": "c",
+        "text": "Chỉ có tôn giáo ngoại nhập"
+      },
+      {
+        "label": "d",
+        "text": "Không có tôn giáo"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết tôn giáo nào có số lượng tín đồ đông nhất ở Việt Nam?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Công giáo"
+      },
+      {
+        "label": "b",
+        "text": "Phật giáo"
+      },
+      {
+        "label": "c",
+        "text": "Tin Lành"
+      },
+      {
+        "label": "d",
+        "text": "Cao Đài"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết một trong những thủ đoạn các thế lực thù địch thường dùng để chia rẽ dân tộc?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Khuyến khích sản xuất nông nghiệp"
+      },
+      {
+        "label": "b",
+        "text": "Xuyên tạc chính sách dân tộc của Đảng, Nhà nước"
+      },
+      {
+        "label": "c",
+        "text": "Phát triển du lịch"
+      },
+      {
+        "label": "d",
+        "text": "Hỗ trợ giáo dục"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết khu vực Tây Nguyên, tổ chức phản động “Tin Lành Đê-ga” kích động điều gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Xây dựng chùa chiền"
+      },
+      {
+        "label": "b",
+        "text": "Đòi khu tự trị riêng"
+      },
+      {
+        "label": "c",
+        "text": "Mở trường học"
+      },
+      {
+        "label": "d",
+        "text": "Trồng cây công nghiệp"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết quan điểm của Đảng, Nhà nước về vấn đề dân tộc là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Bảo đảm các dân tộc bình đẳng, đoàn kết, tôn trọng và giúp nhau cùng phát triển"
+      },
+      {
+        "label": "b",
+        "text": "Dân tộc đa số lãnh đạo dân tộc thiểu số"
+      },
+      {
+        "label": "c",
+        "text": "Ưu tiên dân tộc thiểu số hơn dân tộc đa số"
+      },
+      {
+        "label": "d",
+        "text": "Giữ nguyên khoảng cách phát triển giữa các dân tộc"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết chính sách tôn giáo của Việt Nam nhấn mạnh điều gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tôn giáo là vấn đề riêng tư, không cần quản lý"
+      },
+      {
+        "label": "b",
+        "text": "Tôn giáo là nhu cầu tinh thần của một bộ phận nhân dân"
+      },
+      {
+        "label": "c",
+        "text": "Loại bỏ các tôn giáo ngoại nhập"
+      },
+      {
+        "label": "d",
+        "text": "Chỉ công nhận một số ít tôn giáo"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết các thế lực thù địch lợi dụng tôn giáo để chia rẽ điều gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giữa người theo và không theo tôn giáo"
+      },
+      {
+        "label": "b",
+        "text": "Giữa người già và người trẻ"
+      },
+      {
+        "label": "c",
+        "text": "Giữa các ngành nghề"
+      },
+      {
+        "label": "d",
+        "text": "Giữa các vùng kinh tế"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết biện pháp quan trọng để cán bộ, chiến sĩ phòng, chống âm mưu lợi dụng vấn đề dân tộc, tôn giáo?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Không nghe theo lời xúi giục"
+      },
+      {
+        "label": "b",
+        "text": "Xây dựng bản lĩnh chính trị vững vàng"
+      },
+      {
+        "label": "c",
+        "text": "Hạn chế dùng điện thoại di động"
+      },
+      {
+        "label": "d",
+        "text": "Tránh tiếp xúc với dân"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết hành vi nào bị nghiêm cấm trong công tác tôn giáo?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tuyên truyền, vận động tín đồ sống tốt đời đẹp đạo"
+      },
+      {
+        "label": "b",
+        "text": "Phân biệt đối xử vì lý do tín ngưỡng, tôn giáo"
+      },
+      {
+        "label": "c",
+        "text": "Tổ chức lễ hội tôn giáo"
+      },
+      {
+        "label": "d",
+        "text": "Xây dựng cơ sở thờ tự"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Một số nội dung, biện pháp phòng ngừa, đấu tranh ngăn chặn âm mưu, thủ đoạn, hoạt động lợi dụng vấn đề dân tộc, tôn giáo để chống phá đảng, nhà nước, quân đội trong tình hình hiện nay”, đồng chí cho biết Lời dạy của Chủ tịch Hồ Chí Minh “Nước Việt Nam là một, dân tộc Việt Nam là một…” thể hiện điều gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Sự đoàn kết dân tộc bền vững"
+      },
+      {
+        "label": "b",
+        "text": "Sự đa dạng văn hóa"
+      },
+      {
+        "label": "c",
+        "text": "Sự phát triển kinh tế"
+      },
+      {
+        "label": "d",
+        "text": "Sự hội nhập quốc tế"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, nội dung nào không thuộc chuẩn mực “Yêu nước, tôn trọng Nhân dân, tuyệt đối trung thành với Đảng, với Tổ quốc”?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Suốt đời phấn đấu cho lý tưởng cách mạng của Đảng"
+      },
+      {
+        "label": "b",
+        "text": "Tôn trọng, tin tưởng, gắn bó mật thiết với Nhân dân"
+      },
+      {
+        "label": "c",
+        "text": "Đặt lợi ích quốc gia - dân tộc lên trên hết, trước hết"
+      },
+      {
+        "label": "d",
+        "text": "Nêu cao tinh thần tiết kiệm, chống lãng phí trong sử dụng tài sản công"
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, “Kiên định và vận dụng sáng tạo chủ nghĩa Mác – Lênin, tư tưởng Hồ Chí Minh” là yêu cầu trong nội dung chuẩn mực nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Bản lĩnh"
+      },
+      {
+        "label": "b",
+        "text": "Yêu nước"
+      },
+      {
+        "label": "c",
+        "text": "Gương mẫu"
+      },
+      {
+        "label": "d",
+        "text": "Tôn trọng Nhân dân"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, “Dám nghĩ, dám làm, dám chịu trách nhiệm, hành động vì lợi ích chung” là biểu hiện cụ thể của phẩm chất nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Kiệm"
+      },
+      {
+        "label": "b",
+        "text": "Sáng tạo"
+      },
+      {
+        "label": "c",
+        "text": "Khiêm tốn"
+      },
+      {
+        "label": "d",
+        "text": "Kỷ cương"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, trong nhóm chuẩn mực “Cần, kiệm, liêm, chính, chí công vô tư”, nội dung nào nhấn mạnh sự trong sạch, không tham ô, tham nhũng?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chính"
+      },
+      {
+        "label": "b",
+        "text": "Liêm"
+      },
+      {
+        "label": "c",
+        "text": "Cần"
+      },
+      {
+        "label": "d",
+        "text": "Chí công vô tư"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, yêu cầu cán bộ, đảng viên “luôn luôn giữ gìn sự đoàn kết, thống nhất trong Đảng, cơ quan, đơn vị” thuộc nội dung chuẩn mực nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trách nhiệm"
+      },
+      {
+        "label": "b",
+        "text": "Đoàn kết"
+      },
+      {
+        "label": "c",
+        "text": "Tình thương"
+      },
+      {
+        "label": "d",
+        "text": "Bản lĩnh"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, sống có nghĩa tình, chân thành, thương yêu, giúp đỡ đồng chí, đồng nghiệp và mọi người là biểu hiện của nội dung nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tình thương"
+      },
+      {
+        "label": "b",
+        "text": "Gương mẫu"
+      },
+      {
+        "label": "c",
+        "text": "Khiêm tốn"
+      },
+      {
+        "label": "d",
+        "text": "Tu dưỡng, rèn luyện"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, nội dung “Cán bộ, đảng viên, nhất là người giữ chức vụ càng cao càng phải gương mẫu trước tập thể và Nhân dân” thuộc nội dung chuẩn mực nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Khiêm tốn"
+      },
+      {
+        "label": "b",
+        "text": "Gương mẫu"
+      },
+      {
+        "label": "c",
+        "text": "Học tập suốt đời"
+      },
+      {
+        "label": "d",
+        "text": "Kỷ cương"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, một trong những yêu cầu quan trọng để cán bộ, đảng viên trong quân đội thực hiện chuẩn mực đạo đức cách mạng là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quán triệt sâu sắc quan điểm của Đảng, Quân ủy Trung ương về xây dựng, chỉnh đốn Đảng và phát huy phẩm chất “Bộ đội Cụ Hồ”"
+      },
+      {
+        "label": "b",
+        "text": "Tăng cường công tác huấn luyện quân sự, kỹ thuật hiện đại"
+      },
+      {
+        "label": "c",
+        "text": "Đổi mới phương pháp quản lý tài chính, hậu cần trong đơn vị"
+      },
+      {
+        "label": "d",
+        "text": "Xây dựng cơ chế thị trường trong hoạt động quân sự"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, văn kiện nào của Ban Chấp hành Trung ương Đảng khóa XIII tiếp tục nhấn mạnh đẩy mạnh xây dựng, chỉnh đốn Đảng, hệ thống chính trị, kiên quyết ngăn chặn, xử lý cán bộ suy thoái?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nghị quyết số 847-NQ/QUTW (2021)"
+      },
+      {
+        "label": "b",
+        "text": "Quy định số 37-QĐ/TW (2021)"
+      },
+      {
+        "label": "c",
+        "text": "Kết luận số 21-KL/TW (2021)"
+      },
+      {
+        "label": "d",
+        "text": "Quy định số 144-QĐ/TW (2024)"
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, trong tu dưỡng, rèn luyện đạo đức cách mạng, cán bộ, đảng viên phải luôn đặt lợi ích nào lên trên hết, trước hết?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Lợi ích tập thể đơn vị và cá nhân"
+      },
+      {
+        "label": "b",
+        "text": "Lợi ích của Đảng, của Tổ quốc"
+      },
+      {
+        "label": "c",
+        "text": "Lợi ích gia đình và đồng chí, đồng đội"
+      },
+      {
+        "label": "d",
+        "text": "Lợi ích vật chất và tinh thần bản thân"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, để phát huy sức mạnh tổng hợp trong thực hiện chuẩn mực đạo đức cách mạng, ai có trách nhiệm đặc biệt quan trọng trong lãnh đạo, chỉ đạo?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quân nhân chuyên nghiệp"
+      },
+      {
+        "label": "b",
+        "text": "Chính ủy, chính trị viên, người chỉ huy các cấp"
+      },
+      {
+        "label": "c",
+        "text": "Hội đồng quân nhân"
+      },
+      {
+        "label": "d",
+        "text": "Cơ quan hậu cần"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, việc phát hiện, biểu dương, nhân rộng mô hình, gương điển hình tiêu biểu trong học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh nhằm mục đích gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tăng cường phong trào thi đua, tạo động lực lan tỏa tích cực trong cơ quan, đơn vị"
+      },
+      {
+        "label": "b",
+        "text": "Đảm bảo khen thưởng kịp thời cho cán bộ, đảng viên xuất sắc"
+      },
+      {
+        "label": "c",
+        "text": "Giảm áp lực công tác cho các tổ chức đảng và cơ quan chính trị"
+      },
+      {
+        "label": "d",
+        "text": "Hoàn thành chỉ tiêu thi đua cuối năm của đơn vị"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, biện pháp then chốt để bảo đảm thực hiện hiệu quả chuẩn mực đạo đức cách mạng trong quân đội là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nâng cao chất lượng huấn luyện quân sự"
+      },
+      {
+        "label": "b",
+        "text": "Tăng cường lãnh đạo, chỉ đạo của cấp ủy, tổ chức đảng và chính trị viên, người chỉ huy các cấp"
+      },
+      {
+        "label": "c",
+        "text": "Đẩy mạnh tăng gia sản xuất, cải thiện đời sống bộ đội"
+      },
+      {
+        "label": "d",
+        "text": "Phát triển cơ sở vật chất, kỹ thuật hiện đại"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, nội dung nào cần được cấp ủy, tổ chức đảng tập trung quán triệt trong lãnh đạo, chỉ đạo để xây dựng đạo đức cách mạng cho cán bộ, đảng viên?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nghị quyết, chỉ thị, kết luận, quy định của Đảng về xây dựng, chỉnh đốn Đảng"
+      },
+      {
+        "label": "b",
+        "text": "Nhiệm vụ sản xuất kinh tế kết hợp quốc phòng"
+      },
+      {
+        "label": "c",
+        "text": "Các chỉ tiêu huấn luyện kỹ thuật, chiến thuật"
+      },
+      {
+        "label": "d",
+        "text": "Công tác đối ngoại quốc phòng"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, đồng chí cho biết ai có vai trò đặc biệt quan trọng trong tổ chức, chỉ đạo, kiểm tra việc tu dưỡng, rèn luyện đạo đức cách mạng của cán bộ, đảng viên ở đơn vị?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chính ủy, chính trị viên, người chỉ huy các cấp"
+      },
+      {
+        "label": "b",
+        "text": "Cán bộ hậu cần"
+      },
+      {
+        "label": "c",
+        "text": "Đoàn thanh niên"
+      },
+      {
+        "label": "d",
+        "text": "Ban chỉ huy quân sự địa phương"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, một trong những yêu cầu đối với công tác lãnh đạo, chỉ đạo của cấp ủy, tổ chức đảng trong thực hiện đạo đức cách mạng là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Bảo đảm hình thức phong phú, sinh động"
+      },
+      {
+        "label": "b",
+        "text": "Đi vào chiều sâu, có chất lượng, hiệu quả, tránh hình thức, chung chung"
+      },
+      {
+        "label": "c",
+        "text": "Giảm tải nhiệm vụ chính trị cho cơ quan, đơn vị"
+      },
+      {
+        "label": "d",
+        "text": "Dành nhiều thời gian cho công tác đối ngoại"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, công tác kiểm tra, giám sát của cấp ủy, tổ chức đảng đối với cán bộ, đảng viên trong thực hiện chuẩn mực đạo đức cách mạng nhằm mục tiêu nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Kịp thời phát hiện, ngăn ngừa, xử lý suy thoái, tiêu cực"
+      },
+      {
+        "label": "b",
+        "text": "Đảm bảo chỉ tiêu khen thưởng cuối năm"
+      },
+      {
+        "label": "c",
+        "text": "Giảm áp lực thi đua cho cơ quan, đơn vị"
+      },
+      {
+        "label": "d",
+        "text": "Tạo thuận lợi cho cán bộ, đảng viên nghỉ ngơi"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, việc sơ kết, tổng kết, rút kinh nghiệm định kỳ trong thực hiện chuẩn mực đạo đức cách mạng có ý nghĩa gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Hoàn thành thủ tục hành chính"
+      },
+      {
+        "label": "b",
+        "text": "Xác định nguyên nhân, đề ra giải pháp nâng cao chất lượng lãnh đạo, chỉ đạo"
+      },
+      {
+        "label": "c",
+        "text": "Đáp ứng yêu cầu báo cáo cấp trên"
+      },
+      {
+        "label": "d",
+        "text": "Giảm nhẹ khối lượng công tác kiểm tra"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hiện chuẩn mực đạo đức cách mạng của cán bộ, đảng viên trong Quân đội hiện nay”, để nâng cao hiệu quả lãnh đạo, chỉ đạo của cấp ủy, tổ chức đảng trong thực hiện chuẩn mực đạo đức cách mạng, cần đặc biệt chú trọng vào khâu nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Xây dựng nghị quyết, tổ chức thực hiện, kiểm tra giám sát, sơ kết – tổng kết đồng bộ, chặt chẽ"
+      },
+      {
+        "label": "b",
+        "text": "Mở rộng quan hệ hợp tác quốc tế"
+      },
+      {
+        "label": "c",
+        "text": "Tăng cường xây dựng cơ sở vật chất kỹ thuật"
+      },
+      {
+        "label": "d",
+        "text": "Phát triển hoạt động văn hóa, thể thao trong đơn vị"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết mục tiêu cao nhất của công tác kiểm tra, giám sát việc thực hiện đạo đức cách mạng và chuẩn mực “Bộ đội Cụ Hồ” trong Quân đội là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đảm bảo cán bộ, đảng viên không vi phạm kỷ luật."
+      },
+      {
+        "label": "b",
+        "text": "Kịp thời phát hiện, khắc phục khuyết điểm, nhân rộng nhân tố mới, điển hình tiên tiến."
+      },
+      {
+        "label": "c",
+        "text": "Hoàn thành các chỉ tiêu thi đua, khen thưởng hàng năm."
+      },
+      {
+        "label": "d",
+        "text": "Ngăn ngừa cán bộ, đảng viên tham gia các hoạt động trái phép ngoài đơn vị."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết một trong những yêu cầu quan trọng khi tổ chức tự phê bình và phê bình để nâng cao đạo đức cách mạng cho cán bộ, đảng viên là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phải thực hiện nghiêm túc, dân chủ, có lý, có tình, giúp đồng chí, đồng đội nhận ra khuyết điểm và khắc phục."
+      },
+      {
+        "label": "b",
+        "text": "Chỉ tổ chức trong phạm vi hẹp để giữ đoàn kết nội bộ."
+      },
+      {
+        "label": "c",
+        "text": "Mỗi cá nhân tự viết bản kiểm điểm mà không cần ý kiến tập thể."
+      },
+      {
+        "label": "d",
+        "text": "Thực hiện hình thức để hoàn thành quy trình, tránh gây mâu thuẫn."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết theo tư tưởng Hồ Chí Minh, nguyên nhân nào làm cho tự phê bình và phê bình trở nên vô hiệu, thậm chí phản tác dụng?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Biến tự phê bình thành dịp để kể công, khoe thành tích."
+      },
+      {
+        "label": "b",
+        "text": "Tiến hành phê bình không thường xuyên, chỉ vào dịp tổng kết cuối năm."
+      },
+      {
+        "label": "c",
+        "text": "Phê bình nhằm công kích cá nhân, trả thù."
+      },
+      {
+        "label": "d",
+        "text": "Chỉ tập trung phê bình khuyết điểm mà bỏ qua ưu điểm."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết Hồ Chí Minh so sánh việc sợ phê bình với hiện tượng nào dưới đây?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Người bệnh giấu bệnh, không chịu uống thuốc."
+      },
+      {
+        "label": "b",
+        "text": "Người lính ra trận mà không mang vũ khí."
+      },
+      {
+        "label": "c",
+        "text": "Con thuyền ra khơi không có la bàn."
+      },
+      {
+        "label": "d",
+        "text": "Người nông dân gieo hạt mà không chăm bón."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết vì sao Hồ Chí Minh coi tự phê bình và phê bình là “vũ khí sắc bén nhất” của Đảng?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vì giúp phơi bày sai phạm và xử lý kỷ luật kịp thời."
+      },
+      {
+        "label": "b",
+        "text": "Vì là con đường duy nhất để phát hiện và loại bỏ phần tử thoái hóa."
+      },
+      {
+        "label": "c",
+        "text": "Vì nhờ đó Đảng ta sửa chữa khuyết điểm, phát triển ưu điểm, ngày càng thêm mạnh."
+      },
+      {
+        "label": "d",
+        "text": "Vì tạo ra sự khác biệt căn bản giữa Đảng ta và các đảng phái khác."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết theo Hồ Chí Minh, “khéo phê bình” thể hiện ở yêu cầu nào sau đây?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phải chỉ rõ khuyết điểm của tổ chức, cá nhân mà không cần xét đến ưu điểm."
+      },
+      {
+        "label": "b",
+        "text": "Phải kết hợp hài hòa giữa lý và tình, lúc, chỗ, phê bình việc làm chứ không phê bình con người."
+      },
+      {
+        "label": "c",
+        "text": "Phải nghiêm khắc, ráo riết, không được dùng ngôn ngữ mềm mỏng."
+      },
+      {
+        "label": "d",
+        "text": "Phải bảo đảm tuyệt đối bí mật, không công khai trước tập thể."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết vì sao Hồ Chí Minh ví tự phê bình và phê bình “cần thiết như không khí đối với con người”?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vì không có nó, tổ chức khó đạt được sự đồng thuận."
+      },
+      {
+        "label": "b",
+        "text": "Vì nó giúp cá nhân và tập thể tồn tại và phát triển không ngừng."
+      },
+      {
+        "label": "c",
+        "text": "Vì nó là biện pháp duy nhất để xử lý mâu thuẫn nội bộ."
+      },
+      {
+        "label": "d",
+        "text": "Vì nó thay thế mọi cơ chế giám sát, kiểm tra khác."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết theo tư tưởng Hồ Chí Minh, tự phê bình và phê bình giúp cán bộ, chiến sĩ như thế nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nhận rõ ưu điểm, khuyết điểm để khắc phục, sửa chữa."
+      },
+      {
+        "label": "b",
+        "text": "Không ngừng hoàn thiện bản thân, trở thành quân nhân vừa “hồng” vừa “chuyên”."
+      },
+      {
+        "label": "c",
+        "text": "Góp phần nâng cao phẩm chất chính trị, đạo đức, năng lực công tác."
+      },
+      {
+        "label": "d",
+        "text": "Là vũ khí sắc bén chống suy thoái, “tự diễn biến”, “tự chuyển hóa”."
+      }
+    ],
+    "correct": null
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết những hạn chế thường gặp trong thực hiện tự phê bình và phê bình ở một số cơ quan, đơn vị là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nội dung còn vòng vo, né tránh, nể nang, “dĩ hòa vi quý”."
+      },
+      {
+        "label": "b",
+        "text": "Một số cán bộ, đảng viên thiếu tự giác, đổ lỗi cho hoàn cảnh."
+      },
+      {
+        "label": "c",
+        "text": "Hiện tượng lợi dụng phê bình để hạ bệ, gây mất đoàn kết."
+      },
+      {
+        "label": "d",
+        "text": "Một số người đứng đầu chưa nêu cao tính gương mẫu."
+      }
+    ],
+    "correct": null
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết nguyên nhân chủ yếu làm giảm hiệu quả của tự phê bình và phê bình trong quân đội là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Một số cấp ủy, chỉ huy chưa quan tâm mức, thiếu quyết liệt."
+      },
+      {
+        "label": "b",
+        "text": "Nhận thức của một bộ phận cán bộ, đảng viên còn hạn chế."
+      },
+      {
+        "label": "c",
+        "text": "Trách nhiệm nêu gương, nhất là của người đứng đầu, chưa tạo lan tỏa."
+      },
+      {
+        "label": "d",
+        "text": "Công tác kiểm tra, giám sát có lúc chưa thường xuyên, chặt chẽ."
+      }
+    ],
+    "correct": null
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết cấp ủy, chỉ huy các cấp cần coi tự phê bình và phê bình là:",
+    "options": [
+      {
+        "label": "a",
+        "text": "Công việc thường xuyên, nền nếp, “như rửa mặt hằng ngày”."
+      },
+      {
+        "label": "b",
+        "text": "Biện pháp để mỗi cán bộ, đảng viên “tự soi, tự sửa”."
+      },
+      {
+        "label": "c",
+        "text": "Trách nhiệm nêu gương của người đứng đầu trước tập thể."
+      },
+      {
+        "label": "d",
+        "text": "Một nguyên tắc quan trọng để giữ vững kỷ luật, kỷ cương Đảng."
+      }
+    ],
+    "correct": null
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết những biểu hiện tích cực của cán bộ, đảng viên khi thực hiện tự phê bình và phê bình nghiêm túc là:",
+    "options": [
+      {
+        "label": "a",
+        "text": "Dám nghĩ, dám nói, dám làm, dám chịu trách nhiệm."
+      },
+      {
+        "label": "b",
+        "text": "Dám đổi mới, sáng tạo, đương đầu với khó khăn, thử thách."
+      },
+      {
+        "label": "c",
+        "text": "Tôn trọng, lắng nghe ý kiến quần chúng, phát huy trí tuệ tập thể."
+      },
+      {
+        "label": "d",
+        "text": "Hành động vì lợi ích chung, góp phần giải quyết khâu yếu, mặt yếu kéo dài."
+      }
+    ],
+    "correct": null
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết trong các nghị quyết, kết luận, quy định cần nghiên cứu, trọng tâm để quán triệt về tự phê bình và phê bình trong Quân đội hiện nay là văn kiện nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chỉ thị số 855-CT/QUTW của Quân ủy Trung ương về đẩy mạnh thực hiện Cuộc vận động phát huy truyền thống, cống hiến tài năng, xứng danh “Bộ đội Cụ Hồ” thời kỳ mới."
+      },
+      {
+        "label": "b",
+        "text": "Kết luận số 01-KL/TW của Bộ Chính trị về tiếp tục thực hiện Chỉ thị 05."
+      },
+      {
+        "label": "c",
+        "text": "Quy định số 37-QĐ/TW của Bộ Chính trị về những điều đảng viên không được làm."
+      },
+      {
+        "label": "d",
+        "text": "Nghị quyết, kết luận Hội nghị Trung ương 4 khóa XII, XIII về xây dựng, chỉnh đốn Đảng."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết trong nội dung “chống”, cấp ủy, chỉ huy các cấp phải kiên quyết ngăn chặn điều gì nguy hại nhất đến đoàn kết nội bộ?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Việc thực hiện quy chế dân chủ ở cơ sở."
+      },
+      {
+        "label": "b",
+        "text": "Lợi dụng tự phê bình và phê bình để hạ bệ, trả thù cá nhân."
+      },
+      {
+        "label": "c",
+        "text": "Sinh hoạt đối thoại dân chủ giữa lãnh đạo và quần chúng."
+      },
+      {
+        "label": "d",
+        "text": "Thực hiện nghiêm túc chế độ kiểm điểm hằng năm."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết để tự phê bình và phê bình trong đơn vị đạt chất lượng, hiệu quả, người đứng đầu cần làm gì trước hết?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tổ chức họp kín chỉ trong ban chỉ huy."
+      },
+      {
+        "label": "b",
+        "text": "Chỉ lắng nghe góp ý qua báo cáo cấp dưới."
+      },
+      {
+        "label": "c",
+        "text": "Mạnh dạn tự phê bình trước cán bộ, đảng viên và quần chúng."
+      },
+      {
+        "label": "d",
+        "text": "Tập trung khen thưởng để động viên tinh thần."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết theo yêu cầu đặt ra, kết quả đẩy mạnh tự phê bình và phê bình được dùng để làm căn cứ trong hoạt động nào sau đây?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Quy hoạch cán bộ nguồn cấp chiến lược."
+      },
+      {
+        "label": "b",
+        "text": "Xếp loại huấn luyện hằng năm."
+      },
+      {
+        "label": "c",
+        "text": "Xét duyệt tiêu chuẩn đảng viên ưu tú."
+      },
+      {
+        "label": "d",
+        "text": "Đánh giá, phân loại, bình xét thi đua, khen thưởng."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết một trong những biểu hiện cần khắc phục triệt để trong sinh hoạt tự phê bình và phê bình của cấp ủy là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Thực hiện nghị quyết."
+      },
+      {
+        "label": "b",
+        "text": "Độc đoán, gia trưởng, nể nang, né tránh."
+      },
+      {
+        "label": "c",
+        "text": "Đề cao tính chiến đấu."
+      },
+      {
+        "label": "d",
+        "text": "Chủ động xây dựng kế hoạch cụ thể."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết theo tư tưởng Hồ Chí Minh và yêu cầu hiện nay, cán bộ chỉ huy, quản lý các cấp cần thể hiện phẩm chất nào để vừa là người lãnh đạo, vừa là “đày tớ thật trung thành của nhân dân”?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nêu cao ý thức trách nhiệm; trung thực, nghiêm túc, khách quan, có lý, có tình trong tự phê bình và phê bình."
+      },
+      {
+        "label": "b",
+        "text": "Tập trung hoàn thành chỉ tiêu, ít chú trọng đến tự phê bình và phê bình."
+      },
+      {
+        "label": "c",
+        "text": "Hạn chế lắng nghe ý kiến quần chúng để giữ vững uy tín cá nhân."
+      },
+      {
+        "label": "d",
+        "text": "Đặt nặng hình thức khen thưởng, coi nhẹ công tác tự soi, tự sửa."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết một trong những biểu hiện tiêu cực mà các cấp ủy, tổ chức đảng cần kiên quyết khắc phục trong tự phê bình và phê bình là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Thiếu kiến thức quân sự."
+      },
+      {
+        "label": "b",
+        "text": "“Dĩ hòa vi quý”, nể nang, né tránh, ngại va chạm."
+      },
+      {
+        "label": "c",
+        "text": "Hạn chế về thể lực."
+      },
+      {
+        "label": "d",
+        "text": "Thụ động trong tiếp thu khoa học kỹ thuật."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết vai trò nêu gương của người đứng đầu trong tự phê bình và phê bình được xác định như thế nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chỉ đạo, phân công công việc hợp lý."
+      },
+      {
+        "label": "b",
+        "text": "Bảo đảm chế độ, chính sách cho cán bộ, chiến sĩ."
+      },
+      {
+        "label": "c",
+        "text": "Duy trì kỷ luật hành chính trong cơ quan, đơn vị."
+      },
+      {
+        "label": "d",
+        "text": "Trở thành động lực, niềm tin để cấp dưới tự giác học tập, noi theo."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề “Đẩy mạnh học tập và làm theo tư tưởng Hồ Chí Minh về tự phê bình và phê bình trong trong Quân đội nhân dân Việt Nam hiện nay”, đồng chí cho biết theo phương châm “trên trước, dưới sau; trong trước, ngoài sau”, ai phải nêu gương trước hết trong tự phê bình và phê bình?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đoàn viên, hội viên trẻ."
+      },
+      {
+        "label": "b",
+        "text": "Cán bộ, đảng viên, nhất là cấp ủy viên, thủ trưởng cơ quan, đơn vị."
+      },
+      {
+        "label": "c",
+        "text": "Các tổ chức quần chúng."
+      },
+      {
+        "label": "d",
+        "text": "Chiến sĩ mới nhập ngũ."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Đồng chí cho biết đổi mới, sáng tạo trong quân đội được xem là yếu tố cốt lõi vì lý do nào sau đây?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp giảm bớt áp lực huấn luyện."
+      },
+      {
+        "label": "b",
+        "text": "Phá vỡ lối mòn tư duy, khắc phục sự trì trệ và nâng cao hiệu quả thực hiện nhiệm vụ."
+      },
+      {
+        "label": "c",
+        "text": "Tạo điều kiện để rút ngắn thời gian công tác hành chính."
+      },
+      {
+        "label": "d",
+        "text": "Giúp hạn chế sự thay đổi về tổ chức lực lượng."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Đồng chí cho biết vai trò của đổi mới, sáng tạo trong thích ứng với tình hình mới hiện nay được thể hiện rõ nhất ở nội dung nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp đơn vị tránh phải thay đổi cơ cấu tổ chức."
+      },
+      {
+        "label": "b",
+        "text": "Bảo đảm giảm tải công việc cho cấp trên."
+      },
+      {
+        "label": "c",
+        "text": "Giúp hạn chế sử dụng công nghệ hiện đại."
+      },
+      {
+        "label": "d",
+        "text": "Nâng cao năng lực phân tích, xử lý vấn đề phức tạp, đa chiều."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Đồng chí cho biết vì sao đổi mới, sáng tạo được coi là nhân tố then chốt để nâng cao hiệu quả, hiệu suất công việc trong quân đội?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vì giúp tăng cường tính tự phát và giảm sự kiểm soát."
+      },
+      {
+        "label": "b",
+        "text": "Vì tạo điều kiện cho cán bộ làm việc độc lập, không cần phối hợp."
+      },
+      {
+        "label": "c",
+        "text": "Vì giúp tiết kiệm thời gian, nguồn lực, nâng cao chất lượng công tác."
+      },
+      {
+        "label": "d",
+        "text": "Vì giúp giảm yêu cầu về huấn luyện chính quy."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Đồng chí cho biết giải pháp nào được coi là nền tảng trong việc phát huy tinh thần đổi mới, sáng tạo của đội ngũ cán bộ, đảng viên?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đẩy mạnh tuyên truyền, giáo dục nâng cao nhận thức."
+      },
+      {
+        "label": "b",
+        "text": "Đẩy mạnh phong trào thi đua."
+      },
+      {
+        "label": "c",
+        "text": "Tăng cường đầu tư cơ sở vật chất kỹ thuật."
+      },
+      {
+        "label": "d",
+        "text": "Tổ chức các hội nghị sơ kết, tổng kết định kỳ."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Đồng chí cho biết vì sao việc tuyên truyền, giáo dục về đổi mới, sáng tạo có ý nghĩa đặc biệt quan trọng?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp cán bộ giảm tải khối lượng công việc."
+      },
+      {
+        "label": "b",
+        "text": "Tạo ra sự chuyển biến mạnh mẽ về tư duy và hành động."
+      },
+      {
+        "label": "c",
+        "text": "Bảo đảm sự đồng bộ về cơ sở vật chất giữa các đơn vị."
+      },
+      {
+        "label": "d",
+        "text": "Giúp rút ngắn thời gian huấn luyện."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Đồng chí cho biết việc xây dựng môi trường làm việc dân chủ, công bằng trong đơn vị có ý nghĩa nào sau đây đối với cán bộ, đảng viên trong đổi mới, sáng tạo?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp đơn vị giảm áp lực về công tác quản lý tài chính."
+      },
+      {
+        "label": "b",
+        "text": "Hạn chế việc cán bộ luân chuyển sang lĩnh vực khác."
+      },
+      {
+        "label": "c",
+        "text": "Giúp cấp trên dễ dàng kiểm soát mọi hoạt động của cấp dưới."
+      },
+      {
+        "label": "d",
+        "text": "Tạo điều kiện để cán bộ, đảng viên mạnh dạn đề xuất ý tưởng."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Đồng chí cho biết giải pháp việc bố trí “đúng người, đúng việc” trong đổi mới sáng tạo có tác dụng gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp giảm thiểu số lượng cán bộ phải đào tạo lại."
+      },
+      {
+        "label": "b",
+        "text": "Khai thác tối đa năng lực, sở trường của cán bộ, đảng viên."
+      },
+      {
+        "label": "c",
+        "text": "Giúp cấp ủy dễ quản lý hơn."
+      },
+      {
+        "label": "d",
+        "text": "Bảo đảm cơ cấu tổ chức không thay đổi."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Đồng chí cho biết một trong những phẩm chất quan trọng của cán bộ, đảng viên trong đổi mới, sáng tạo là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Dám nghĩ, dám làm, dám chịu trách nhiệm."
+      },
+      {
+        "label": "b",
+        "text": "Thích an phận, giữ nguyên lối mòn."
+      },
+      {
+        "label": "c",
+        "text": "Hạn chế thử nghiệm phương pháp mới."
+      },
+      {
+        "label": "d",
+        "text": "Ưu tiên ổn định hơn là đột phá."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Đồng chí cho biết nhân rộng các điển hình đổi mới, sáng tạo trong đơn vị nhằm mục tiêu chính nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Bảo đảm tính bí mật, không phổ biến sáng kiến."
+      },
+      {
+        "label": "b",
+        "text": "Giúp giảm bớt áp lực thi đua giữa các đơn vị."
+      },
+      {
+        "label": "c",
+        "text": "Tạo động lực và cảm hứng cho cán bộ, đảng viên khác."
+      },
+      {
+        "label": "d",
+        "text": "Giới hạn số lượng cán bộ tham gia phong trào."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Đồng chí cho biết vai trò then chốt của lãnh đạo, chỉ huy trong phát huy tinh thần đổi mới, sáng tạo là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giữ thái độ trung lập, không can thiệp vào sáng kiến của cấp dưới."
+      },
+      {
+        "label": "b",
+        "text": "Chỉ giám sát và xử lý khi sáng kiến thất bại."
+      },
+      {
+        "label": "c",
+        "text": "Tập trung vào công tác hậu cần, tài chính."
+      },
+      {
+        "label": "d",
+        "text": "Làm gương, định hướng tư duy, kịp thời ghi nhận và động viên."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Đồng chí cho biết Phong trào thi đua “LLVT Quân khu thi đua đổi mới sáng tạo, chuyển đổi số” và “Bình dân học vụ số” tập trung vào nhiệm vụ trọng tâm nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phổ cập tri thức số, kỹ năng số cơ bản, công dân số."
+      },
+      {
+        "label": "b",
+        "text": "Mở rộng phong trào rèn luyện thể lực quân nhân."
+      },
+      {
+        "label": "c",
+        "text": "Huy động nhân dân đóng góp thiết bị công nghệ."
+      },
+      {
+        "label": "d",
+        "text": "Tăng cường xây dựng thao trường, bãi tập."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Đồng chí cho biết Phong trào thi đua “LLVT Quân khu thi đua đổi mới sáng tạo, chuyển đổi số” và “Bình dân học vụ số” chỉ tiêu đến năm 2026, 100% sĩ quan, QNCN, CNVCQP phải đạt yêu cầu gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Có chứng chỉ ngoại ngữ bậc 3."
+      },
+      {
+        "label": "b",
+        "text": "Thành thạo các nền tảng, dịch vụ số, trở thành công dân số."
+      },
+      {
+        "label": "c",
+        "text": "Hoàn thành huấn luyện bắn súng nâng cao."
+      },
+      {
+        "label": "d",
+        "text": "Có chứng chỉ công nghệ thông tin cơ bản."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Đồng chí cho biết Phong trào thi đua “LLVT Quân khu thi đua đổi mới sáng tạo, chuyển đổi số” và “Bình dân học vụ số” đối tượng HSQ, BS được yêu cầu đạt chỉ tiêu nào sau đây?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Hoàn thành nghĩa vụ quân sự trước thời hạn."
+      },
+      {
+        "label": "b",
+        "text": "Thành thạo thiết kế phần mềm quân sự."
+      },
+      {
+        "label": "c",
+        "text": "Có hiểu biết, kỹ năng số cơ bản và biết bảo vệ bản thân trên môi trường số."
+      },
+      {
+        "label": "d",
+        "text": "Có chứng chỉ sư phạm kỹ thuật số."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Đồng chí cho biết Phong trào thi đua “LLVT Quân khu thi đua đổi mới sáng tạo, chuyển đổi số” và “Bình dân học vụ số” chỉ tiêu năm 2025, có bao nhiêu phần trăm sĩ quan, QNCN, CNVCQP phải có hiểu biết về chuyển đổi số, kiến thức và kỹ năng số?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trên 50%"
+      },
+      {
+        "label": "b",
+        "text": "Trên 60%"
+      },
+      {
+        "label": "c",
+        "text": "Trên 70%"
+      },
+      {
+        "label": "d",
+        "text": "Trên 80%"
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Đồng chí cho biết Phong trào thi đua “LLVT Quân khu thi đua đổi mới sáng tạo, chuyển đổi số” và “Bình dân học vụ số” giai đoạn từ 2027 đến 2030, 100% SQ, QNCN, CNVCQP trong LLVT Quân khu sẽ làm chủ những công nghệ nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Công nghệ luyện kim và dệt may hiện đại."
+      },
+      {
+        "label": "b",
+        "text": "Công nghệ sinh học nông nghiệp."
+      },
+      {
+        "label": "c",
+        "text": "AI, IoT, dữ liệu lớn, bán dẫn, nano, thông tin vệ tinh và công nghệ mới nổi."
+      },
+      {
+        "label": "d",
+        "text": "Công nghệ sản xuất vũ khí hạng nặng"
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Đồng chí cho biết Phong trào thi đua “LLVT Quân khu thi đua đổi mới sáng tạo, chuyển đổi số” và “Bình dân học vụ số” các cơ quan, đơn vị cần tập trung vào những nhiệm vụ nào sau đây?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tổ chức tuyên truyền, giáo dục nâng cao nhận thức về chuyển đổi số."
+      },
+      {
+        "label": "b",
+        "text": "Đẩy mạnh ứng dụng công nghệ mới, bảo đảm an toàn thông tin, an ninh mạng."
+      },
+      {
+        "label": "c",
+        "text": "Triển khai phong trào “Bình dân học vụ số”, phổ cập kỹ năng số cho cán bộ, chiến sĩ."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Đồng chí cho biết mục tiêu trọng tâm của đợt sinh hoạt chuyên đề “Đảng viên tiên phong học tập kỹ năng số” trong LLVT Quân khu là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giúp quân nhân giải trí lành mạnh trên nền tảng số."
+      },
+      {
+        "label": "b",
+        "text": "Nâng cao thể lực cho bộ đội qua các ứng dụng công nghệ."
+      },
+      {
+        "label": "c",
+        "text": "Tạo điều kiện để mọi quân nhân tiếp cận tri thức, nâng cao nhận thức, ứng dụng chuyển đổi số."
+      },
+      {
+        "label": "d",
+        "text": "Tăng cường hợp tác quốc tế về công nghệ số."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Đồng chí cho biết nghị quyết nào của Bộ Chính trị là cơ sở quan trọng trong công tác quán triệt về chuyển đổi số?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nghị quyết số 27-NQ/TW"
+      },
+      {
+        "label": "b",
+        "text": "Nghị quyết số 57-NQ/TW"
+      },
+      {
+        "label": "c",
+        "text": "Nghị quyết số 30-NQ/TW"
+      },
+      {
+        "label": "d",
+        "text": "Nghị quyết số 12-NQ/TW"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Đồng chí cho biết bài viết nào của Tổng Bí thư Tô Lâm được nhấn mạnh trong nội dung sinh hoạt chuyên đề “Đảng viên tiên phong học tập kỹ năng số”?",
+    "options": [
+      {
+        "label": "a",
+        "text": "“Văn hóa – nền tảng tinh thần của xã hội”."
+      },
+      {
+        "label": "b",
+        "text": "“Cách mạng công nghiệp 4.0 – cơ hội và thách thức”."
+      },
+      {
+        "label": "c",
+        "text": "“Chuyển đổi số - động lực quan trọng phát triển lực lượng sản xuất, hoàn thiện quan hệ sản xuất đưa đất nước bước vào kỷ nguyên mới”."
+      },
+      {
+        "label": "d",
+        "text": "“Xây dựng Quân đội nhân dân Việt Nam cách mạng, chính quy, tinh nhuệ, hiện đại”."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Đồng chí cho biết hình thức sinh hoạt nào được khuyến khích trong đợt sinh hoạt chuyên đề “Đảng viên tiên phong học tập kỹ năng số”?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chỉ học tập qua tài liệu in giấy."
+      },
+      {
+        "label": "b",
+        "text": "Tổ chức tọa đàm, trao đổi, hướng dẫn thực hành sử dụng nền tảng số."
+      },
+      {
+        "label": "c",
+        "text": "Tự học cá nhân, không cần sinh hoạt tập thể."
+      },
+      {
+        "label": "d",
+        "text": "Thảo luận qua mạng xã hội tự do."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Đồng chí cho biết cấp ủy, chi bộ có trách nhiệm như thế nào trong triển khai phong trào “Bình dân học vụ số”?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Lãnh đạo, chỉ đạo thực hiện nghị quyết, kiểm tra, giám sát, đánh giá kết quả."
+      },
+      {
+        "label": "b",
+        "text": "Chỉ phổ biến thông tin, không cần giám sát."
+      },
+      {
+        "label": "c",
+        "text": "Giao toàn bộ cho cán bộ chính trị phụ trách."
+      },
+      {
+        "label": "d",
+        "text": "Tổ chức sinh hoạt tùy theo điều kiện, không cần định kỳ."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Đồng chí cho biết ngày nào hằng năm được xác định là Ngày Chuyển đổi số quốc gia?",
+    "options": [
+      {
+        "label": "a",
+        "text": "02/9."
+      },
+      {
+        "label": "b",
+        "text": "19/8."
+      },
+      {
+        "label": "c",
+        "text": "10/10."
+      },
+      {
+        "label": "d",
+        "text": "16/10."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Đồng chí cho biết nội dung nào sau đây không thuộc nhiệm vụ trong đợt sinh hoạt chuyên đề “Đảng viên tiên phong học tập kỹ năng số”?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Giới thiệu khung kiến thức, kỹ năng số cơ bản."
+      },
+      {
+        "label": "b",
+        "text": "Tổ chức thi ứng dụng kỹ năng số."
+      },
+      {
+        "label": "c",
+        "text": "Hướng dẫn sử dụng công cụ số phục vụ công tác."
+      },
+      {
+        "label": "d",
+        "text": "Xây dựng cơ sở hạ tầng quân sự mới."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Đồng chí cho biết trong đợt sinh hoạt chuyên đề “Đảng viên tiên phong học tập kỹ năng số”, đảng viên cần thực hiện những nội dung nào để thể hiện vai trò tiên phong trong kỷ nguyên số?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tích cực học tập, rèn luyện kỹ năng số."
+      },
+      {
+        "label": "b",
+        "text": "Nêu gương, hỗ trợ, vận động quần chúng hưởng ứng phong trào."
+      },
+      {
+        "label": "c",
+        "text": "Thực hiện nghiêm việc sử dụng nền tảng số, phần mềm dùng chung, số hóa hồ sơ."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Đồng chí cho biết cấp ủy, chi bộ cần thực hiện hình thức sinh hoạt nào để triển khai Phong trào “Bình dân học vụ số”?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Định kỳ sinh hoạt, ra nghị quyết lãnh đạo, kiểm điểm và đánh giá kết quả."
+      },
+      {
+        "label": "b",
+        "text": "Hằng quý tự biên soạn chuyên đề hoặc nghiên cứu, quán triệt chuyên đề của cấp trên."
+      },
+      {
+        "label": "c",
+        "text": "Kết hợp sinh hoạt với hướng dẫn thực hành, tọa đàm về chuyển đổi số."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Một trong những nhiệm vụ trọng tâm về chuyển đổi số của Bộ Quốc phòng năm 2025 là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Gửi nhận văn bản có độ mật là “Mật” trên mạng truyền số liệu quân sự."
+      },
+      {
+        "label": "b",
+        "text": "Phổ cập 100% điện thoại thông minh cho chiến sĩ."
+      },
+      {
+        "label": "c",
+        "text": "Thay thế toàn bộ hệ thống thư điện tử hiện tại."
+      },
+      {
+        "label": "d",
+        "text": "Xây dựng mạng xã hội riêng cho quân nhân."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Giải pháp kỹ thuật nào được sử dụng để đảm bảo an toàn khi gửi văn bản “Mật” trên mạng truyền số liệu quân sự?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tạo file trên phân vùng ổ cứng mật và mã hóa file."
+      },
+      {
+        "label": "b",
+        "text": "Chỉ gửi trong giờ hành chính và có sự giám sát trực tiếp."
+      },
+      {
+        "label": "c",
+        "text": "Sử dụng chữ ký số và xác thực hai yếu tố."
+      },
+      {
+        "label": "d",
+        "text": "Nén file thành định dạng .zip và đặt mật khẩu."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Mục tiêu chính của việc xây dựng Trung tâm dữ liệu (TTDL) Bộ Quốc phòng là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Cung cấp kho phần mềm dùng chung cho toàn quân."
+      },
+      {
+        "label": "b",
+        "text": "Tập trung hóa các cơ sở dữ liệu cấp Bộ và chuyên ngành để hỗ trợ chỉ huy, điều hành."
+      },
+      {
+        "label": "c",
+        "text": "Phát triển các công cụ trí tuệ nhân tạo như ChatGPT."
+      },
+      {
+        "label": "d",
+        "text": "Lưu trữ thư điện tử của toàn bộ quân nhân."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Đâu là một trong những \"điểm nghẽn\" cơ bản ảnh hưởng đến tiến trình chuyển đổi số trong BQP?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tốc độ mạng Internet quá chậm."
+      },
+      {
+        "label": "b",
+        "text": "Dữ liệu phân mảnh, chưa có trung tâm dữ liệu tập trung."
+      },
+      {
+        "label": "c",
+        "text": "Thiếu các phần mềm diệt virus hiệu quả."
+      },
+      {
+        "label": "d",
+        "text": "Chi phí duy trì hệ thống quá cao."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Hệ thống nào cho phép tổ chức các cuộc họp, giao ban trực tuyến nhằm tiết kiệm chi phí trong BQP?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Hệ thống Quản lý văn bản và Điều hành."
+      },
+      {
+        "label": "b",
+        "text": "Hệ thống truyền hình ứng dụng."
+      },
+      {
+        "label": "c",
+        "text": "Hệ thống thư điện tử quân sự."
+      },
+      {
+        "label": "d",
+        "text": "Nền tảng Cổng thông tin điện tử."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Khung kiến trúc Chính phủ số BQP được xây dựng nhằm mục đích gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Để xây dựng một mạng Internet riêng biệt, không kết nối ra bên ngoài."
+      },
+      {
+        "label": "b",
+        "text": "Chỉ để quản lý tài chính và hậu cần."
+      },
+      {
+        "label": "c",
+        "text": "Để thay thế hoàn toàn vai trò của con người trong chỉ huy."
+      },
+      {
+        "label": "d",
+        "text": "Đảm bảo tính đồng bộ, phân lớp và khả năng tích hợp với Chính phủ số quốc gia."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Đâu là một trong các kiến trúc thành phần của Mô hình tổng thể Khung kiến trúc Chính phủ số BQP?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Kiến trúc Trí tuệ nhân tạo."
+      },
+      {
+        "label": "b",
+        "text": "Kiến trúc An ninh mạng."
+      },
+      {
+        "label": "c",
+        "text": "Kiến trúc Dữ liệu lĩnh vực quân sự."
+      },
+      {
+        "label": "d",
+        "text": "Kiến trúc Quản lý nhân sự."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết một trong những nguy cơ rõ nét và trực tiếp nhất khi không phát huy được giá trị truyền thống là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Dễ bị hòa tan bởi các yếu tố văn hóa ngoại lai."
+      },
+      {
+        "label": "b",
+        "text": "Mất đi bản sắc và sự độc đáo của dân tộc."
+      },
+      {
+        "label": "c",
+        "text": "Suy giảm ý thức bảo vệ độc lập, tự do."
+      },
+      {
+        "label": "d",
+        "text": "Tất cả các phương án."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết giá trị truyền thống có vai trò đặc biệt quan trọng đối với cán bộ, chiến sĩ vì lý do nào sau đây?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Góp phần giữ gìn bản sắc văn hóa dân tộc."
+      },
+      {
+        "label": "b",
+        "text": "Là nền tảng bồi dưỡng lý tưởng cách mạng."
+      },
+      {
+        "label": "c",
+        "text": "Tạo động lực củng cố niềm tin và ý chí quyết tâm."
+      },
+      {
+        "label": "d",
+        "text": "Cả A, B và C."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết những nguyên nhân chính làm hạn chế chất lượng giáo dục truyền thống hiện nay?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Mặt trái kinh tế thị trường."
+      },
+      {
+        "label": "b",
+        "text": "Sự chống phá tư tưởng – văn hóa của các thế lực thù địch."
+      },
+      {
+        "label": "c",
+        "text": "Thiếu sáng tạo, đổi mới trong nội dung, hình thức tuyên truyền."
+      },
+      {
+        "label": "d",
+        "text": "Cả A, B và C."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết vì sao công tác tuyên truyền, giáo dục truyền thống ở một số đơn vị còn hạn chế?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nội dung khô cứng, thiếu gắn kết với thực tiễn."
+      },
+      {
+        "label": "b",
+        "text": "Quá tập trung vào ứng dụng công nghệ hiện đại."
+      },
+      {
+        "label": "c",
+        "text": "Chỉ chú trọng giáo dục thể lực cho bộ đội."
+      },
+      {
+        "label": "d",
+        "text": "Quá nhiều hình thức giải trí làm phân tán."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết yếu tố giữ vai trò quyết định trong việc tổ chức và triển khai công tác giáo dục truyền thống cho cán bộ, chiến sĩ ở đơn vị là gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Sự tham gia của các cựu chiến binh."
+      },
+      {
+        "label": "b",
+        "text": "Vai trò của cấp ủy, chỉ huy các cấp."
+      },
+      {
+        "label": "c",
+        "text": "Các phương tiện truyền thông xã hội."
+      },
+      {
+        "label": "d",
+        "text": "Sáng kiến cá nhân của chiến sĩ."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết Chỉ thị số 20-CT/TW ngày 18/01/2018 của Ban Bí thư Trung ương tập trung vào nội dung gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đổi mới giáo dục đào tạo."
+      },
+      {
+        "label": "b",
+        "text": "Xây dựng văn hóa đọc trong quân đội."
+      },
+      {
+        "label": "c",
+        "text": "Nâng cao chất lượng nghiên cứu, biên soạn, tuyên truyền, giáo dục lịch sử Đảng."
+      },
+      {
+        "label": "d",
+        "text": "Phát triển công nghệ số trong giáo dục."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết Đảng ủy Quân khu 5 đã ban hành Nghị quyết số 07-NQ/ĐUQK năm 2017 về vấn đề gì?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Xây dựng Quân khu chính quy, tinh nhuệ, hiện đại."
+      },
+      {
+        "label": "b",
+        "text": "Tăng cường huấn luyện, sẵn sàng chiến đấu."
+      },
+      {
+        "label": "c",
+        "text": "Đẩy mạnh phong trào thi đua quyết thắng."
+      },
+      {
+        "label": "d",
+        "text": "“Lãnh đạo nâng cao chất lượng, hiệu quả công tác lịch sử quân sự đến năm 2020 và những năm tiếp theo trong LLVT Quân khu”."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết phát triển website, fanpage, ứng dụng di động để chia sẻ câu chuyện lịch sử là của giải pháp nào sau đây trong giáo dục truyền thống?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tăng cường công tác hậu cần."
+      },
+      {
+        "label": "b",
+        "text": "Đổi mới, đa dạng hóa hình thức tuyên truyền, giáo dục."
+      },
+      {
+        "label": "c",
+        "text": "Phát huy vai trò tổ chức đảng."
+      },
+      {
+        "label": "d",
+        "text": "Đẩy mạnh phong trào văn nghệ."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết trong bối cảnh hiện nay, công tác giáo dục truyền thống cho LLVT Quân khu có ý nghĩa quan trọng nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Góp phần ngăn chặn và làm thất bại âm mưu “diễn biến hòa bình”, “phi chính trị hóa Quân đội”."
+      },
+      {
+        "label": "b",
+        "text": "Tăng cường kỹ năng quân sự thuần túy cho cán bộ, chiến sĩ."
+      },
+      {
+        "label": "c",
+        "text": "Giúp bộ đội giảm áp lực trong huấn luyện thể lực."
+      },
+      {
+        "label": "d",
+        "text": "Tạo điều kiện cho bộ đội giao lưu quốc tế."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu chuyên đề một số giải pháp nâng cao chất lượng giáo dục truyền thống, đồng chí cho biết trong bối cảnh toàn cầu hóa và bùng nổ công nghệ số, giải pháp nào sau đây nhằm khuyến khích cán bộ, chiến sĩ tự giác học tập và phát huy truyền thống lịch sử?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Tổ chức các lớp học lịch sử theo giáo trình cứng nhắc, thống nhất toàn quân."
+      },
+      {
+        "label": "b",
+        "text": "Khuyến khích cán bộ, chiến sĩ tham gia sáng tác văn học, nghệ thuật; ứng dụng công nghệ hiện đại, nền tảng số (làm video, clip, viết bài, nghiên cứu về lịch sử, truyền thống) để lan tỏa trong toàn đơn vị."
+      },
+      {
+        "label": "c",
+        "text": "Giới hạn thời gian học tập lịch sử nhằm tập trung cho huấn luyện quân sự thuần túy."
+      },
+      {
+        "label": "d",
+        "text": "Giao nhiệm vụ cho cán bộ chính trị trực tiếp đọc báo cáo truyền thống định kỳ."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết Ngày truyền thống của Lực lượng vũ trang Quân khu 5 là ngày nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "25/9/2000"
+      },
+      {
+        "label": "b",
+        "text": "16/10/1945"
+      },
+      {
+        "label": "c",
+        "text": "02/9/1945"
+      },
+      {
+        "label": "d",
+        "text": "27/7/1947"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết ai đã ký quyết định công nhận ngày truyền thống LLVT Quân khu 5?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đại tướng Võ Nguyên Giáp"
+      },
+      {
+        "label": "b",
+        "text": "Bộ trưởng Phạm Văn Trà"
+      },
+      {
+        "label": "c",
+        "text": "Đại tướng Lê Đức Anh"
+      },
+      {
+        "label": "d",
+        "text": "Thượng tướng Nguyễn Chánh"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết Chiến khu 5 được thành lập theo chỉ thị của ai?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Ban Chấp hành Trung ương Đảng"
+      },
+      {
+        "label": "b",
+        "text": "Chính phủ Lâm thời Việt Nam Dân chủ Cộng hòa"
+      },
+      {
+        "label": "c",
+        "text": "Chủ tịch Hồ Chí Minh"
+      },
+      {
+        "label": "d",
+        "text": "Xứ ủy Trung Kỳ"
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, ngày 20/10/1948, các Khu 5, 6, 15 được sáp nhập thành Liên khu 5, đồng chí cho biết ai giữ chức Chính trị ủy viên khi đó?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nguyễn Chánh"
+      },
+      {
+        "label": "b",
+        "text": "Cao Văn Khánh"
+      },
+      {
+        "label": "c",
+        "text": "Đàm Quang Trung"
+      },
+      {
+        "label": "d",
+        "text": "Võ Chí Công"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, trong thời kỳ kháng chiến chống Pháp, trận phục kích tiêu diệt đoàn xe của đại tá Roogie diễn ra ở đâu?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đèo Cả"
+      },
+      {
+        "label": "b",
+        "text": "Đèo Cù Mông"
+      },
+      {
+        "label": "c",
+        "text": "Đèo Hải Vân"
+      },
+      {
+        "label": "d",
+        "text": "Đèo Phượng Hoàng"
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết ai là chiến sĩ quyết tử nổi tiếng với tiếng bom Rộc Dừa năm 1947?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Phạm Kiệt"
+      },
+      {
+        "label": "b",
+        "text": "Nguyễn Đôn"
+      },
+      {
+        "label": "c",
+        "text": "Ngô Mây"
+      },
+      {
+        "label": "d",
+        "text": "Đinh Núp"
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết Chiến thắng Đăk Pơ (24/6/1954) diệt gọn đơn vị nào của địch?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Binh đoàn cơ động GM100"
+      },
+      {
+        "label": "b",
+        "text": "Sư đoàn 22"
+      },
+      {
+        "label": "c",
+        "text": "Chiến đoàn 21"
+      },
+      {
+        "label": "d",
+        "text": "Lữ đoàn 173"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết trận thắng Mỹ đầu tiên của LLVT Quân khu 5 là trận nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Ba Gia"
+      },
+      {
+        "label": "b",
+        "text": "Núi Thành"
+      },
+      {
+        "label": "c",
+        "text": "Vạn Tường"
+      },
+      {
+        "label": "d",
+        "text": "Thuận Ninh"
+      }
+    ],
+    "correct": null
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết Chiến dịch nào của Tây Nguyên đã mở màn cho Tổng tiến công mùa Xuân 1975?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chiến dịch Pleime"
+      },
+      {
+        "label": "b",
+        "text": "Chiến dịch Bắc Tây Nguyên"
+      },
+      {
+        "label": "c",
+        "text": "Chiến dịch Buôn Ma Thuột"
+      },
+      {
+        "label": "d",
+        "text": "Chiến dịch Đường 9 Nam Lào"
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết Đội du kích đầu tiên ở Nam Trung Bộ được thành lập?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Vũ Hùng"
+      },
+      {
+        "label": "b",
+        "text": "Ba Tơ"
+      },
+      {
+        "label": "c",
+        "text": "Đờ-li-nhông"
+      },
+      {
+        "label": "d",
+        "text": "Dư Khánh"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết Đội Du kích Ba Tơ ra đời ngày nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "11/3/1945"
+      },
+      {
+        "label": "b",
+        "text": "12/3/1945"
+      },
+      {
+        "label": "c",
+        "text": "04/5/1945"
+      },
+      {
+        "label": "d",
+        "text": "14/8/1945"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết ai là Đội trưởng đầu tiên của Đội Du kích Ba Tơ?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Nguyễn Đôn"
+      },
+      {
+        "label": "b",
+        "text": "Phạm Kiệt"
+      },
+      {
+        "label": "c",
+        "text": "Nguyễn Chánh"
+      },
+      {
+        "label": "d",
+        "text": "Trần Công Khanh"
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết tổ chức vũ trang nào ở Quảng Nam ra đời sau Đội Du kích Ba Tơ, góp phần quan trọng vào tiền thân LLVT Quân khu 5?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đội Du kích Vũ Hùng."
+      },
+      {
+        "label": "b",
+        "text": "Đội Tự vệ Hòn Khoai."
+      },
+      {
+        "label": "c",
+        "text": "Đội Tự vệ Bắc Sơn."
+      },
+      {
+        "label": "d",
+        "text": "Đội Tự vệ Vĩnh Hy."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết chiến dịch nào trong kháng chiến chống Pháp đánh dấu bước trưởng thành vượt bậc về chiến thuật và chiến dịch của LLVT Liên khu 5, khi cùng lúc tiêu diệt 3 cứ điểm lớn và đánh bại nhiều đơn vị cơ động tinh nhuệ của địch?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chiến dịch Hè Thu 1951."
+      },
+      {
+        "label": "b",
+        "text": "Chiến dịch Biên giới 1950."
+      },
+      {
+        "label": "c",
+        "text": "Chiến dịch An Khê 1953."
+      },
+      {
+        "label": "d",
+        "text": "Chiến dịch Tây Nguyên 1954."
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết ai là anh hùng làng kháng chiến Xi-Tơ nổi tiếng ở Gia Lai?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đinh Núp"
+      },
+      {
+        "label": "b",
+        "text": "A Sanh"
+      },
+      {
+        "label": "c",
+        "text": "Kpă Klơng"
+      },
+      {
+        "label": "d",
+        "text": "Ama Trang Lơng"
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết trận thắng vang dội của LLVT Liên khu 5 vào tháng 6/1954 được Bác Hồ gửi thư khen là trận nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trận Gò Cà"
+      },
+      {
+        "label": "b",
+        "text": "Trận Com-pơ-long"
+      },
+      {
+        "label": "c",
+        "text": "Trận Đăk Pơ"
+      },
+      {
+        "label": "d",
+        "text": "Trận Bồ Bồ"
+      }
+    ],
+    "correct": "c"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết chiến thắng nào của LLVT Quân khu 5 đã đánh bại chiến thuật “thiết xa vận” lần đầu tiên của địch trên chiến trường Khu 5?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Trận Kỳ Sanh (1964) – Quảng Nam."
+      },
+      {
+        "label": "b",
+        "text": "Trận Núi Thành (1965) – Quảng Nam."
+      },
+      {
+        "label": "c",
+        "text": "Trận Nà Niêu (1962) – Quảng Ngãi."
+      },
+      {
+        "label": "d",
+        "text": "Trận An Lão (1964) – Bình Định."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết chiến thắng nào ở Khu 5 được coi là “Ấp Bắc đối với quân Mỹ”, mở đầu cho phong trào “tìm Mỹ mà đánh, tìm ngụy mà diệt” và làm phá sản bước đầu chiến lược “chiến tranh cục bộ” của Mỹ?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Chiến thắng Núi Thành (5/1965)."
+      },
+      {
+        "label": "b",
+        "text": "Chiến thắng Vạn Tường (8/1965)."
+      },
+      {
+        "label": "c",
+        "text": "Chiến thắng An Lão (12/1964)."
+      },
+      {
+        "label": "d",
+        "text": "Chiến thắng Ba Gia (5/1965)."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết để đáp ứng tình hình mới ở biên giới Tây Nam, năm 1978–1979, Quân khu 5 đã thành lập thêm những sư đoàn bộ binh nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Sư đoàn 307, 309 và 315."
+      },
+      {
+        "label": "b",
+        "text": "Sư đoàn 320, 325 và 324."
+      },
+      {
+        "label": "c",
+        "text": "Sư đoàn 5, 7 và 9."
+      },
+      {
+        "label": "d",
+        "text": "Sư đoàn 308, 312 và 316."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết trong 10 năm làm nhiệm vụ quốc tế ở Campuchia, LLVT Quân khu 5 đã đạt được những kết quả nào sau đây?",
+    "options": [
+      {
+        "label": "a",
+        "text": "Đánh trên 1.000 trận, tiêu diệt 5.888 tên Pôn Pốt."
+      },
+      {
+        "label": "b",
+        "text": "Bắt sống hàng ngàn tên, thu hơn 10.000 súng các loại."
+      },
+      {
+        "label": "c",
+        "text": "Cứu đói trên 30 vạn người dân Campuchia."
+      },
+      {
+        "label": "d",
+        "text": "Cả A, B và C."
+      }
+    ],
+    "correct": "d"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết trong cuộc chiến tranh bảo vệ biên giới Tây Nam, LLVT Quân khu 5 đã đánh bao nhiêu trận và tiêu diệt bao nhiêu tên địch?",
+    "options": [
+      {
+        "label": "a",
+        "text": "642 trận, diệt 2.044 tên."
+      },
+      {
+        "label": "b",
+        "text": "520 trận, diệt 1.800 tên."
+      },
+      {
+        "label": "c",
+        "text": "700 trận, diệt 3.000 tên."
+      },
+      {
+        "label": "d",
+        "text": "600 trận, diệt 2.500 tên."
+      }
+    ],
+    "correct": "a"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đồng chí cho biết LLVT Quân khu 5 vinh dự được Nhà nước tặng thưởng Huân chương Sao vàng vào những năm nào?",
+    "options": [
+      {
+        "label": "a",
+        "text": "1975 và 2010."
+      },
+      {
+        "label": "b",
+        "text": "1985 và 2011."
+      },
+      {
+        "label": "c",
+        "text": "1980 và 2005."
+      },
+      {
+        "label": "d",
+        "text": "1990 và 2015."
+      }
+    ],
+    "correct": "b"
+  },
+  {
+    "question": "Qua nghiên cứu lịch sử LLVT Quân khu 5, đâu là truyền thống của LLVT Quân khu 5?",
+    "options": [
+      {
+        "label": "a",
+        "text": "“Tự lực tự cường, vượt mọi khó khăn, mưu trí sáng tạo, chiến đấu bền bỉ, chiến thắng oanh liệt”"
+      },
+      {
+        "label": "b",
+        "text": "“Tự lực tự cường, khắc phục khó khăn, chịu đựng gian khổ, mưu trí sáng tạo, chiến đấu kiên cường, chiến thắng vẻ vang”"
+      },
+      {
+        "label": "c",
+        "text": "“Đoàn kết, dũng cảm, tự lực, sáng tạo, chiến đấu kiên trung, quyết thắng vẻ vang”"
+      },
+      {
+        "label": "d",
+        "text": "“Trung thành, dũng cảm, cần kiệm, sáng tạo, quyết tâm vượt khó, chiến đấu kiên cường”"
+      }
+    ],
+    "correct": "b"
+  }
+];
+function shuffleArray(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=a[i]; a[i]=a[j]; a[j]=tmp; } }
+
+function pick50(){ var copy = ALL_QUESTIONS.slice(); shuffleArray(copy); return copy.slice(0,50); }
+
+function renderQuiz(questions){ var area=document.getElementById('quizArea'); area.innerHTML=''; for(var idx=0;idx<questions.length;idx++){ var q=questions[idx]; var qi=idx+1; var div=document.createElement('div'); div.className='question'; var qtxt=document.createElement('div'); qtxt.className='qtxt'; qtxt.innerText='Câu '+qi+': '+q.question; div.appendChild(qtxt); for(var oi=0;oi<q.options.length;oi++){ var opt=q.options[oi]; var lab=document.createElement('label'); lab.className='option'; var inp=document.createElement('input'); inp.type='radio'; inp.name='q'+qi; inp.value=opt.label; lab.appendChild(inp); lab.append(' '+(opt.label.toUpperCase()+'. '+opt.text)); div.appendChild(lab); } area.appendChild(div); } localStorage.setItem('currentQuizQuestions', JSON.stringify(questions)); }
+
+function init(){ var qs=pick50(); renderQuiz(qs); }
+
+document.getElementById('regenBtn').addEventListener('click', function(){ init(); window.scrollTo({top:0,behavior:'smooth'}); });
+
+document.getElementById('submitBtn').addEventListener('click', function(){ var fullname=document.getElementById('fullname').value.trim(); var unit=document.getElementById('unit').value.trim(); if(!fullname || !unit){ alert('Vui lòng nhập Họ và tên và Đơn vị trước khi nộp.'); return; } var questions=JSON.parse(localStorage.getItem('currentQuizQuestions')||'[]'); var total=questions.length; var results={ meta:{ fullname:fullname, unit:unit, total: total }, answers: {} }; for(var i=1;i<=total;i++){ var sel=document.querySelector('input[name="q'+i+'"]:checked'); results.answers[i]= sel? sel.value : ''; } localStorage.setItem('latestQuizResult', JSON.stringify(results)); localStorage.setItem('latestQuizQuestions', JSON.stringify(questions)); window.location.href='result.html'; });
+
+
+// initialize
+init();
+</script>
+</body>
+</html>
