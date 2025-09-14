@@ -22,6 +22,39 @@ button{margin-top:12px;padding:10px 16px;font-size:16px;background:#0b5ed7;color
 .small{font-size:0.9rem;color:#444}
 .footer-note{margin-top:14px;font-size:0.9rem;color:#666}
 </style>
+
+<style>
+  .menu {
+    display: flex;
+    flex-direction: column;   /* Các nút xếp theo cột */
+    gap: 10px;                /* Khoảng cách giữa các nút */
+    max-width: 300px;         /* Giới hạn chiều rộng */
+    margin: 10px auto;        /* Căn giữa */
+  }
+  .menu button {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  .menu button:hover {
+    background-color: #45a049;
+  }
+  .question-block {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+</style>
+
+<div class="menu">
+  <button onclick="startPractice()">Ôn tập 150 câu</button>
+  <button onclick="startExam()">Thi thử 50 câu </button>
+  <button onclick="goHome()">Quay lại menu chính</button>
+</div>
 </head>
 <body>
 <div class='header'><img src='logo.png' alt='Logo'><div>KIỂM TRA CHÍNH TRỊ NĂM 2025</div></div>
@@ -3377,7 +3410,63 @@ document.getElementById('regenBtn').addEventListener('click', function(){ init()
 
 document.getElementById('submitBtn').addEventListener('click', function(){ var fullname=document.getElementById('fullname').value.trim(); var unit=document.getElementById('unit').value.trim(); if(!fullname || !unit){ alert('Vui lòng nhập Họ và tên và Đơn vị trước khi nộp.'); return; } var questions=JSON.parse(localStorage.getItem('currentQuizQuestions')||'[]'); var total=questions.length; var results={ meta:{ fullname:fullname, unit:unit, total: total }, answers: {} }; for(var i=1;i<=total;i++){ var sel=document.querySelector('input[name="q'+i+'"]:checked'); results.answers[i]= sel? sel.value : ''; } localStorage.setItem('latestQuizResult', JSON.stringify(results)); localStorage.setItem('latestQuizQuestions', JSON.stringify(questions)); window.location.href='result.html'; });
 
+// Hàm hiển thị câu hỏi
+function renderQuestions(questions, showAnswers = false) {
+  const container = document.getElementById("quiz-container");
+  container.innerHTML = ""; // Xóa nội dung cũ
 
+  questions.forEach((q, index) => {
+    const qDiv = document.createElement("div");
+    qDiv.classList.add("question-block");
+
+    // Câu hỏi
+    const qText = document.createElement("p");
+    qText.innerHTML = `<b>Câu ${index + 1}:</b> ${q.question}`;
+    qDiv.appendChild(qText);
+
+    // Các phương án
+    q.options.forEach(opt => {
+      const optP = document.createElement("p");
+      optP.innerText = `${opt.label.toUpperCase()}. ${opt.text}`;
+      qDiv.appendChild(optP);
+    });
+
+    // Đáp án đúng (chỉ hiện khi ôn tập)
+    if (showAnswers) {
+      const ans = document.createElement("p");
+      ans.style.color = "green";
+      ans.innerHTML = `✅ Đáp án đúng: ${q.correct.toUpperCase()}`;
+      qDiv.appendChild(ans);
+    }
+
+    container.appendChild(qDiv);
+  });
+}
+
+// Ôn tập: hiện toàn bộ 150 câu + đáp án
+function startPractice() {
+  document.getElementById("quiz-container").innerHTML = ""; 
+  renderQuestions(ALL_QUESTIONS, true); // ✅ hiển thị 150 câu + đáp án
+}
+
+// Thi thử: random 50 câu, có ô chọn đáp án
+function startExam() {
+  document.getElementById("quiz-container").innerHTML = ""; 
+  const shuffled = [...ALL_QUESTIONS].sort(() => 0.5 - Math.random());
+  const selected = shuffled.slice(0, 50);
+  renderQuiz(selected); // ✅ hiển thị dạng radio để chọn đáp án
+ document.getElementById("submitBtn").style.display = "inline-block";
+document.getElementById("regenBtn").style.display = "inline-block";
+}
+
+// Quay lại menu chính (ẩn hết nội dung)
+function goHome() {
+document.getElementById("quiz-container").innerHTML = "";
+  document.getElementById("submitBtn").style.display = "none";  // ẩn nút nộp
+  localStorage.removeItem('currentQuizQuestions');              // xoá đề thi đang lưu
+  localStorage.removeItem('latestQuizResult');                  // xoá kết quả nếu có
+  localStorage.removeItem('latestQuizQuestions');
+}
 // initialize
 init();
 </script>
